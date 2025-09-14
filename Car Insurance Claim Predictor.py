@@ -7,28 +7,6 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.pipeline import make_pipeline
 import joblib
 
-# ========== تدريب الموديل ==========
-# هنا تحط تحميل الداتا (أنا هافترض إنها جاهزة)
-import pandas as pd
-car_ins_ready = pd.read_csv(r"F:\__K&A\Data Camp\projects\Modeling Car Insurance Claim Outcomes\workspace\car_model_data.csv")
-
-X = car_ins_ready.drop(['id', 'outcome'], axis=1).values
-y = car_ins_ready['outcome'].values
-
-
-si = SimpleImputer()
-sc = StandardScaler()
-tree = DecisionTreeClassifier(criterion='entropy', max_depth=5, min_samples_split=5, random_state=1)
-
-pip = make_pipeline(si, sc, tree)
-pip.fit(X, y)
-
-# احفظ الموديل
-joblib.dump(pip, "insurance_model.pkl")
-
-# ========== واجهة Streamlit ==========
-st.title("Car Insurance Claim Predictor")
-
 
 # اختيارات المستخدم
 age = st.selectbox("Age group", ["16-25", "26-39", "40-64", "65+"])
@@ -39,7 +17,7 @@ income = st.selectbox("Income", ["Poverty", "Working class", "Middle class", "Up
 credit_score = st.slider("Credit Score", 0.0, 1.0, 0.5)
 vehicle_ownership = st.radio("Vehicle Ownership", ["Does not own", "Owns"])
 vehicle_year = st.radio("Vehicle Year", ["Before 2015", "2015 or later"])
-married = st.radio("Married?", ["No", "Yes"])
+married = st.radio("Married?", ["No", "Yes"])ؤ
 children = st.number_input("Number of Children", 0, 10, 0)
 annual_mileage = st.number_input("Annual Mileage", 0, 50000, 10000)
 vehicle_type = st.radio("Vehicle Type", ["Sedan", "Sports car"])
