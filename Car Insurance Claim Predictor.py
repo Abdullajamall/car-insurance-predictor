@@ -17,7 +17,7 @@ income = st.selectbox("Income", ["Poverty", "Working class", "Middle class", "Up
 credit_score = st.slider("Credit Score", 0.0, 1.0, 0.5)
 vehicle_ownership = st.radio("Vehicle Ownership", ["Does not own", "Owns"])
 vehicle_year = st.radio("Vehicle Year", ["Before 2015", "2015 or later"])
-married = st.radio("Married?", ["No", "Yes"])ؤ
+married = st.radio("Married?", ["No", "Yes"])
 children = st.number_input("Number of Children", 0, 10, 0)
 annual_mileage = st.number_input("Annual Mileage", 0, 50000, 10000)
 vehicle_type = st.radio("Vehicle Type", ["Sedan", "Sports car"])
@@ -56,3 +56,4 @@ if st.button("Predict"):
         st.error("This client is likely to make a claim!")
     else:
         st.success("This client is unlikely to make a claim.")
+
